@@ -5,9 +5,12 @@ module.exports = function(grunt) {
     pkg: grunt.file.readJSON('package.json'),
     uglify: {
       options: {
-        banner: '/*! jquery.gotop <%= grunt.template.today("yyyy-mm-dd") %> */\n'
+        banner: '/*! <%= pkg.name %>  <%= grunt.template.today("yyyy-mm-dd") %> */\n'
       },
-      build: {
+      gotop: {
+        options: {
+          banner: '/*! jquery.gotop <%= grunt.template.today("yyyy-mm-dd") %> */\n'
+        },
         src: 'GoTop/jquery.gotop.js',
         dest: 'GoTop/jquery.gotop.min.js'
       }
