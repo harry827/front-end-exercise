@@ -1,0 +1,15 @@
+{
+  "name": "jquery-javascript-plugins",
+  "version": "1.0.0",
+  "description": "jquery-javascript-plugins",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/langzhi827/jquery-javascript-plugins.git"
+  },
+  "author": "harry.lang",
+  "homepage": "https://github.com/langzhi827/jquery-javascript-plugins",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-uglify": "^0.5.1"
+  }
+}
