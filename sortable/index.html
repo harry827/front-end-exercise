@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>拖放排序插件</title>
+    
+    <link type="text/css" rel="stylesheet" href="style.css">
+    
+</head>
+<body style="height:1000px;">
+    <ul class="list">
+		<li>item1</li>
+		<li>item2</li>
+		<li>item3</li>
+		<li>item4</li>
+	</ul>
+   
+    <script type="text/javascript" src="http://cdn.staticfile.org/jquery/1.11.1/jquery.min.js"></script>
+    <script type="text/javascript" src="jquery.sortable.min.js"></script>
+    <script type="text/javascript">
+    $(function(){
+        $(".list").sortable();
+    });
+    </script>
+</body>
+</html>

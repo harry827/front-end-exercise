@@ -1,0 +1,28 @@
+.list {
+    list-style: none;
+}
+.list:before,
+.list:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+.list:after {
+    clear: both;
+}
+.list li {
+    width: 80px;
+    height: 80px;
+    line-height: 80px;
+    text-align: center;
+    background: #333;
+    float: left;
+    margin-left: 40px;
+    color: #fff;
+    cursor: move;
+}
+/**对于Safari，还必须要在CSS中对能拖拽的元素设置-khtml-user-drag: element
+
+*[draggable=true] {
+    -khtml-user-drag: element;
+}*/
