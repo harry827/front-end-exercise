@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ajax test</title>
+</head>
+<body>
+
+<script src="../ajax.js"></script>
+<script>
+    zload.jsonp({url:'http://127.0.0.1:3000/jsonp'},function(data){
+        console.log(data)
+    })
+</script>
+
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css'/>
+</head>
+<body>
+<h1><%= title %></h1>
+
+<p>Welcome to <%= title %></p>
+
+<script src="/javascripts/ajax.js"></script>
+<script>
+
+    zload.get('/get', function (data) {
+        console.log(data)
+    });
+
+    zload.post('/post', function (data) {
+        console.log(data)
+    });
+
+    zload.ajax({
+        url: '/post',
+        type: 'POST',
+        aa: 'vv',
+        dataType: 'json',
+        error: function () {
+            console.log(arguments)
+        },
+        success: function (data) {
+            console.log(data)
+        }
+    });
+
+</script>
+
+</body>
+</html>
