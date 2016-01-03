@@ -1,6 +1,6 @@
-jquery-javascript-plugins
+front-end-exercise
 
 
 ==========================
 
-jquery plugins practice
+front-end-exercise

@@ -1,13 +1,13 @@
 {
-  "name": "jquery-javascript-plugins",
+  "name": "front-end-exercise",
   "version": "1.0.0",
-  "description": "jquery-javascript-plugins",
+  "description": "front-end-exercise",
   "repository": {
     "type": "git",
-    "url": "https://github.com/langzhi827/jquery-javascript-plugins.git"
+    "url": "https://github.com/langzhi827/front-end-exercise.git"
   },
   "author": "harry.lang",
-  "homepage": "https://github.com/langzhi827/jquery-javascript-plugins",
+  "homepage": "https://github.com/langzhi827/front-end-exercise",
   "devDependencies": {
     "grunt": "^0.4.5",
     "grunt-contrib-uglify": "^0.5.1"
