@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css'/>
+</head>
+<body>
+<h1><%= title %></h1>
+
+<p>Welcome to <%= title %></p>
+
+
+<button id="upload">上传测试</button>
+
+<script src="javascripts/jquery.js"></script>
+<script src="javascripts/fileUpload.js"></script>
+<script>
+    $(function () {
+        $(document).ready(function () {
+            $("#upload").fileUpload({
+                action: "/upload",
+                change: function (filename) {
+                    console.log('change------------------')
+                    console.log(filename)
+                },
+                submit: function (filename, response) {
+                    console.log('submit------------------')
+                    console.log(filename)
+                },
+                complete: function (filename, response) {
+                    console.log('complete------------------')
+                    console.log(filename)
+                    console.log(response);
+                    $('body').append('<img src="' + JSON.parse(response).file.path + '" />');
+                }
+            });
+        });
+    })
+</script>
+
+</body>
+</html>
