@@ -1,0 +1,26 @@
+{
+  "name": "dataview",
+  "version": "0.0.1",
+  "description": "dataview",
+  "scripts": {
+    "start": "watchify -o js/bundle.js -v -d js/app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "harry.lang",
+  "dependencies": {
+    "flux": "^2.1.1",
+    "material-ui": "^0.14.2",
+    "react": "^0.14.6",
+    "react-dom": "^0.14.6",
+    "react-tap-event-plugin": "^0.2.1"
+  },
+  "devDependencies": {
+    "reactify": "^1.1.1",
+    "watchify": "^3.7.0"
+  },
+  "browserify": {
+    "transform": [
+      "reactify"
+    ]
+  }
+}
