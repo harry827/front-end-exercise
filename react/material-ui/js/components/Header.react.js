@@ -5,6 +5,7 @@ var Popover = require('material-ui/lib/popover/popover');
 var Menu = require('material-ui/lib/menus/menu');
 var MenuItem = require('material-ui/lib/menus/menu-item');
 var FlatButton = require('material-ui/lib/flat-button');
+var RaisedButton = require('material-ui/lib/raised-button');
 
 var SliderAction = require('../actions/SliderAction');
 /**
@@ -67,19 +68,21 @@ var UserInfo = React.createClass({
     }
 });
 
-/*var Nav = React.createClass({
- render: function () {
- return (
- <div>
- <div style={{float:'left',marginRight:'20px',marginTop:'5px'}}>
- <FlatButton label="widget列表" style={{color:'#fff',textTransform:'inherit'}}/>
- <FlatButton label="Dashboard列表" style={{color:'#fff',textTransform:'inherit'}}/>
- </div>
- <div style={{float:'left'}}></div>
- </div>
- );
- }
- });*/
+var Nav = React.createClass({
+    render: function () {
+        return (
+            <div>
+                <div style={{float:'left',marginRight:'20px',marginTop:'5px'}}>
+                    <FlatButton label="创建Dashboard" style={{color:'#fff',textTransform:'inherit',fontSize:16}}/>
+                    <RaisedButton primary={true} label="创建Widget" labelStyle={{textTransform:'inherit'}}/>
+                </div>
+                <div style={{float:'left'}}>
+                    <UserInfo/>
+                </div>
+            </div>
+        );
+    }
+});
 
 /**
  * header头
@@ -92,7 +95,7 @@ var Header = React.createClass({
                 title='Dashboard001'
                 //iconElementLeft={<span></span>}
                 onLeftIconButtonTouchTap={SliderAction.toggle}
-                iconElementRight={<UserInfo/>}
+                iconElementRight={<Nav/>}
                 />
         );
     }

@@ -2,6 +2,7 @@ var React = require('react');
 var LeftNav = require('material-ui/lib/left-nav');
 var MenuItem = require('material-ui/lib/menus/menu-item');
 var Colors = require('material-ui/lib/styles/colors');
+var Delete = require('material-ui/lib/svg-icons/action/delete');
 
 var SliderStore = require('../stores/SliderStore');
 var SliderAction = require('../actions/SliderAction');
@@ -30,18 +31,28 @@ var Slider = React.createClass({
                 width={260}
                 open={this.state.open}
                 onRequestChange={SliderAction.close}
+
                 >
                 <div style={{
                     backgroundColor:Colors.cyanA700,
                     color:'#fff',
                     fontSize:30,
                     textAlign:'center',
-                    padding:'40px 0'
+                    padding:'20px 0',
                 }}>
-                    DataView
+                    Dashboard列表
                 </div>
-                <MenuItem onTouchTap={SliderAction.close}>Dashboard列表</MenuItem>
-                <MenuItem onTouchTap={SliderAction.close}>Widget列表</MenuItem>
+                <MenuItem onTouchTap={SliderAction.close} rightIcon={<Delete />}>Dashboard1</MenuItem>
+                <MenuItem onTouchTap={SliderAction.close} rightIcon={<Delete />}>Dashboard1</MenuItem>
+                <MenuItem onTouchTap={SliderAction.close} rightIcon={<Delete />}>Dashboard1</MenuItem>
+                <MenuItem onTouchTap={SliderAction.close} rightIcon={<Delete />}>Dashboard1</MenuItem>
+                <MenuItem onTouchTap={SliderAction.close} rightIcon={<Delete />}>Dashboard1</MenuItem>
+                <MenuItem onTouchTap={SliderAction.close} rightIcon={<Delete />}>Dashboard1</MenuItem>
+                <MenuItem onTouchTap={SliderAction.close} rightIcon={<Delete />}>Dashboard1</MenuItem>
+                <MenuItem onTouchTap={SliderAction.close} rightIcon={<Delete />}>Dashboard1</MenuItem>
+                <MenuItem onTouchTap={SliderAction.close} rightIcon={<Delete />}>Dashboard1</MenuItem>
+                <MenuItem onTouchTap={SliderAction.close} rightIcon={<Delete />}>Dashboard1</MenuItem>
+                <MenuItem onTouchTap={SliderAction.close} rightIcon={<Delete />}>Dashboard1</MenuItem>
             </LeftNav>
         );
     }
