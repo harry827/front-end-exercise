@@ -73,8 +73,8 @@ var Nav = React.createClass({
         return (
             <div>
                 <div style={{float:'left',marginRight:'20px',marginTop:'5px'}}>
-                    <FlatButton label="创建Dashboard" style={{color:'#fff',textTransform:'inherit',fontSize:16}}/>
-                    <RaisedButton primary={true} label="创建Widget" labelStyle={{textTransform:'inherit'}}/>
+                    <FlatButton label="操作2" style={{color:'#fff',textTransform:'inherit',fontSize:16,marginRight:10}}/>
+                    <RaisedButton primary={true} label="操作1" labelStyle={{textTransform:'inherit'}}/>
                 </div>
                 <div style={{float:'left'}}>
                     <UserInfo/>

@@ -40,19 +40,16 @@ var Slider = React.createClass({
                     textAlign:'center',
                     padding:'20px 0',
                 }}>
-                    Dashboard列表
+                    列表
                 </div>
-                <MenuItem onTouchTap={SliderAction.close} rightIcon={<Delete />}>Dashboard1</MenuItem>
-                <MenuItem onTouchTap={SliderAction.close} rightIcon={<Delete />}>Dashboard1</MenuItem>
-                <MenuItem onTouchTap={SliderAction.close} rightIcon={<Delete />}>Dashboard1</MenuItem>
-                <MenuItem onTouchTap={SliderAction.close} rightIcon={<Delete />}>Dashboard1</MenuItem>
-                <MenuItem onTouchTap={SliderAction.close} rightIcon={<Delete />}>Dashboard1</MenuItem>
-                <MenuItem onTouchTap={SliderAction.close} rightIcon={<Delete />}>Dashboard1</MenuItem>
-                <MenuItem onTouchTap={SliderAction.close} rightIcon={<Delete />}>Dashboard1</MenuItem>
-                <MenuItem onTouchTap={SliderAction.close} rightIcon={<Delete />}>Dashboard1</MenuItem>
-                <MenuItem onTouchTap={SliderAction.close} rightIcon={<Delete />}>Dashboard1</MenuItem>
-                <MenuItem onTouchTap={SliderAction.close} rightIcon={<Delete />}>Dashboard1</MenuItem>
-                <MenuItem onTouchTap={SliderAction.close} rightIcon={<Delete />}>Dashboard1</MenuItem>
+                <MenuItem onTouchTap={SliderAction.close} rightIcon={<Delete />}>Title1</MenuItem>
+                <MenuItem onTouchTap={SliderAction.close} rightIcon={<Delete />}>Title1</MenuItem>
+                <MenuItem onTouchTap={SliderAction.close} rightIcon={<Delete />}>Title1</MenuItem>
+                <MenuItem onTouchTap={SliderAction.close} rightIcon={<Delete />}>Title1</MenuItem>
+                <MenuItem onTouchTap={SliderAction.close} rightIcon={<Delete />}>Title1</MenuItem>
+                <MenuItem onTouchTap={SliderAction.close} rightIcon={<Delete />}>Title1</MenuItem>
+                <MenuItem onTouchTap={SliderAction.close} rightIcon={<Delete />}>Title1</MenuItem>
+                <MenuItem onTouchTap={SliderAction.close} rightIcon={<Delete />}>Title1</MenuItem>
             </LeftNav>
         );
     }
