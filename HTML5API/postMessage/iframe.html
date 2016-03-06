@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>postMessage</title>
+</head>
+<body>
+
+<h1>跨越消息传递postMessage iframe</h1>
+
+
+<script>
+    /**
+     * window.postMessage 是一个用于安全的使用跨源通信的方法。
+     * 通常，不同页面上的脚本只在这种情况下被允许互相访问，
+     * 当且仅当执行它们的页面所处的位置使用相同的协议（通常都是 http）、相同的端口（http默认使用80端口）
+     * 和相同的主机（两个页面的 document.domain 的值相同）。 在正确使用的情况下，
+     * window.postMessage 提供了一个受控的机制来安全地绕过这一限制。
+     *
+     *  postMessage,发送数据方法：
+     *
+     *  otherWindow-->接收消息的window对象
+     *  message-->要传递的消息（有些浏览器只支持字符串，所以出最好传递字符串）
+     *  targetOrigin -->指定目标窗口的源。包括：协议，主机名，端口（可选）,不做限制用‘*’
+     *
+     *  otherWindow.postMessage(message, targetOrigin);
+     *
+     *  onmessage，接收数据方法：
+     *
+     *  messageEvent.data --> 消息副本
+     *  messageEvent.source --> 消息源的window对象
+     *  messageEvent.origin --> 指定消息来源
+     *
+     *  onmessage(messageEvent)
+     */
+
+    window.addEventListener('load', function () {
+        window.addEventListener('message', function (e) {
+            console.log(e)
+
+            e.source.postMessage('hello,this iframe!', e.origin/*'http://127.0.0.1:80'*/);
+        }, false);
+    }, false);
+
+
+</script>
+
+</body>
+</html>
