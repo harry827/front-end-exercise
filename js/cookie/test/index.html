@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>cookie test</title>
+</head>
+<body>
+
+<h1>Cookie Test</h1>
+
+<script src="../zcookie.js"></script>
+<script>
+    console.log(zcookie.get('a'));
+    console.log(zcookie.set('a', {v: 1111}, {expires: 1, path: '/', domain: 'localhost'}));
+    console.log(zcookie.set('b', 'cccc'));
+    console.log(zcookie.get('a'));
+    console.log(zcookie.remove('a', {path: '/', domain: 'localhost'}));
+</script>
+
+</body>
+</html>
