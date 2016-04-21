@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>geolocation</title>
+</head>
+<body>
+
+
+<script>
+    //    获取用户当前位置
+    // navigator.geolocation.getCurrentPosition(successCallback,errorCallback,options)
+
+    //   获取当前位置，并不断监视当前位置，一旦用户位置发生改变，就会调用指定的回调函数
+    // navigator.geolocation.watchPosition(successCallback,errorCallback,options)
+
+    //   停止监视用户位置。此方法参数应当是调用watchPosition方法的返回值
+    // navigator.geolocation.clearWatch
+
+    if (navigator.geolocation) {
+
+        function success(position) {
+            console.log('纬度--->' + position.coords.latitude);
+            console.log('经度--->' + position.coords.longitude);
+            console.log('精确度（以米为单位）--->' + position.coords.accuracy);
+
+            console.log('以米为单位的海拔值--->' + position.coords.altitude);
+            console.log('所得高度的估算精度，以米为单位 --->' + position.coords.altitudeAccuracy);
+            console.log('宿主设备的当前移动方向，以度为单位，相对于正北方向顺时针方向计算--->' + position.coords.heading);
+            console.log('设备的当前对地速度，以米/秒为单位  --->' + position.coords.speed);
+
+            console.log('时间戳--->' + position.timestamp);
+            // 除上述结果外，Firefox还提供了另外一个属性address
+            if (position.address) {
+                //通过address，可以获得国家、省份、城市
+                console.log(position.address.country);
+                console.log(position.address.province);
+                console.log(position.address.city);
+            }
+
+            var url = 'http://maps.google.com/maps/api/staticmap' +
+                    '?center=' + position.coords.latitude + ',' + position.coords.longitude +
+                    '&size=640x640&sensor=true';
+
+            var zoomlevel = 20; // 设置一个大致的缩放级别
+//            if (position.coords.accuracy > 80) { // 在低精度状态下进行放大
+//                zoomlevel -= Math.round(Math.log(position.coords.accuracy / 50) / Math.LN2);
+//            }
+            url += '&zoom=' + zoomlevel;
+
+            var img = document.createElement('img');
+            img.src = url;
+            document.body.appendChild(img);
+
+        }
+
+        //失败回调
+        function error(error) {
+            // error拥有一个code属性和三个常量属性：
+            // PERMISSION_DENIED(code = 1)、POSITION_UNAVAILABLE(code = 2)、TIMEOUT(code = 3)
+            switch (error.code) {
+                case error.TIMEOUT:
+                    console.log('地理位置获取超时');
+                    break;
+                case error.PERMISSION_DENIED:
+                    console.log('用户拒绝提供地理位置');
+                    break;
+                case error.POSITION_UNAVAILABLE:
+                    console.log('地理位置获取失败');
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        var options = {
+            //  是否使用高精度设备，如GPS。(注：会影响电池寿命)
+            enableHighAccuracy: true,
+            //  超时时间，单位毫秒，默认为0
+            timeout: 5000,
+            //  如果获取缓存过的位置信息足够的话，可以设置此属性
+            //  默认为0，即始终强制获取新的位置信息
+            //  如设为Infinity，则始终使用缓存数据
+            maximumAge: 0
+        };
+
+
+        navigator.geolocation.getCurrentPosition(success, error, options);
+
+        //  只要设备位置发生变化，就会执行
+        var watcher_id = navigator.geolocation.watchPosition(success, error, options);
+        //  终止watchPosition方法
+        navigator.geolocation.clearWatch(watcher_id);
+
+    }
+</script>
+
+</body>
+</html>
