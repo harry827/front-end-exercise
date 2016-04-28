@@ -1,0 +1,33 @@
+.jsonview {
+    font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+    font-size: 12px;
+    line-height: 14px;
+}
+
+.jsonview-object {
+    color: #00AA00;
+}
+
+.jsonview-key {
+    color: #CC0000;
+}
+
+.jsonview-string {
+    color: #007777;
+}
+
+.jsonview-number {
+    color: #AA00AA;
+}
+
+.jsonview-array {
+    color: #0033FF;
+}
+
+.jsonview-boolean {
+    color: #0000FF;
+}
+
+.jsonview-none {
+    color: #7B7A7A;
+}
