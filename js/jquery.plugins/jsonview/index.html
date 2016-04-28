@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JSON VIEW</title>
+    <link rel="stylesheet" href="jsonview.css"/>
+    <style>
+
+        .left {
+            width: 40%;
+            float: left;
+        }
+
+        .right {
+            width: 58%;
+            float: right;
+        }
+
+        #cin {
+            height: 500px;
+            width: 100%;
+        }
+
+        #cout {
+            height: 500px;
+            background-color: #f2f2f2;
+            width: 100%;
+            padding: 10px;
+            overflow: auto;
+        }
+
+        #tip {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+<div id="main">
+    <div class="left">
+        <textarea id="cin">
+        </textarea>
+
+        <div id="tip"></div>
+        <button id="format">格式化</button>
+    </div>
+    <div class="right">
+        <div id="cout"></div>
+    </div>
+
+</div>
+
+<script src="jsonview.js"></script>
+<script>
+
+    var cin = document.getElementById('cin');
+    var format = document.getElementById('format');
+    var cout = document.getElementById('cout');
+    var tip = document.getElementById('tip');
+
+    format.onclick = function () {
+        jsonview(cin.value, function (html) {
+            cout.innerHTML = html;
+        }, function (err) {
+            throw err;
+            tip.innerHTML = err;
+        });
+    };
+</script>
+
+</body>
+</html>
