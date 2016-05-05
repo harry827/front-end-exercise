@@ -20,7 +20,7 @@
         var elements = this;
         var $container;
         var settings = {
-            threshold       : 0,
+            threshold       : 0,  // 可增大可见区域的范围
             failure_limit   : 0,
             event           : "scroll",
             effect          : "show",
@@ -40,19 +40,23 @@
 
             elements.each(function() {
                 var $this = $(this);
-                // 设置忽略不可见图片
+                // 如果图片隐藏，且忽略隐藏，则中断循环
                 if (settings.skip_invisible && !$this.is(":visible")) {
                     return;
                 }
+
                 if ($.abovethetop(this, settings) ||
                     $.leftofbegin(this, settings)) {
                         /* Nothing. */
                 } else if (!$.belowthefold(this, settings) &&
-                    !$.rightoffold(this, settings)) {
+                    !$.rightoffold(this, settings)) { // img满足在container视口中，则显示
                         $this.trigger("appear");
                         /* if we found an image we'll load, reset the counter */
+                        // 如果存在那么重新设置计数
                         counter = 0;
                 } else {
+                    //如果找到的是第failure_limit个img元素，
+                    // 且不在container视口上方，左方及视口内（可以允许在视口下方，右方），则中断循环
                     if (++counter > settings.failure_limit) {
                         return false;
                     }
@@ -107,7 +111,7 @@
             }
 
             /* When appear is triggered load original image. */
-            // 绑定一个自定义事件“appear”（只执行一次）
+            // 绑定一个自定义事件“appear”（只执行一次）,处理img显示真实的图片地址
             $self.one("appear", function() {
                 if (!this.loaded) {
                     // 开始展现图片的时候，触发插件使用人（开发者）自定义的appear事件
@@ -170,6 +174,7 @@
 
         /* With IOS5 force loading images when navigating with back button. */
         /* Non optimal workaround. */
+        //
         if ((/(?:iphone|ipod|ipad).*os 5/gi).test(navigator.appVersion)) {
             $window.bind("pageshow", function(event) {
                 if (event.originalEvent && event.originalEvent.persisted) {
@@ -190,7 +195,7 @@
 
     /* Convenience methods in jQuery namespace.           */
     /* Use as  $.belowthefold(element, {threshold : 100, container : window}) */
-
+    // 当前元素不可见，在视口下方
     $.belowthefold = function(element, settings) {
         var fold;
 
@@ -203,6 +208,7 @@
         return fold <= $(element).offset().top - settings.threshold;
     };
 
+    // 当前图片元素的左侧边沿大于等于container的右侧边沿，也就是说：当期元素不可见，在视口右方
     $.rightoffold = function(element, settings) {
         var fold;
 
@@ -215,6 +221,7 @@
         return fold <= $(element).offset().left - settings.threshold;
     };
 
+    // 当前图片元素的底部边沿小于等于container的顶部边沿，也就是说：当期元素不可见，在视口上方
     $.abovethetop = function(element, settings) {
         var fold;
 
@@ -227,6 +234,7 @@
         return fold >= $(element).offset().top + settings.threshold  + $(element).height();
     };
 
+    // 当前图片元素的右侧侧边沿小于等于container的左侧边缘，也就是说：当期元素不可见，在视口左方
     $.leftofbegin = function(element, settings) {
         var fold;
 
@@ -239,6 +247,7 @@
         return fold >= $(element).offset().left + settings.threshold + $(element).width();
     };
 
+    // 获取可见区域的元素
     $.inviewport = function(element, settings) {
          return !$.rightoffold(element, settings) && !$.leftofbegin(element, settings) &&
                 !$.belowthefold(element, settings) && !$.abovethetop(element, settings);

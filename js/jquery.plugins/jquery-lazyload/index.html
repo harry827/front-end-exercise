@@ -5,24 +5,28 @@
     <title>jquery lazyload test</title>
 </head>
 <body>
+<div style="width: 4000px;">
+    <img class="lazy" data-original="img/1.jpg" width="640" height="200">
+    <img class="lazy" data-original="img/2.jpg" width="640" height="200">
+    <img class="lazy" data-original="img/3.jpg" width="640" height="200">
+    <img class="lazy" data-original="img/4.jpg" width="640" height="200">
+    <img class="lazy" data-original="img/5.jpg" width="640" height="200">
+    <img class="lazy" data-original="img/6.jpg" width="640" height="200">
+    <img class="lazy" data-original="img/7.jpg" width="640" height="200">
+    <img class="lazy" data-original="img/8.jpg" width="640" height="200">
+    <img class="lazy" data-original="img/9.jpg" width="640" height="200">
+</div>
+<style>
+    img {
+        float: left;
+    }
 
-<img class="lazy" data-original="img/1.jpg" width="640" height="200">
-<img class="lazy" data-original="img/2.jpg" width="640" height="200">
-<img class="lazy" data-original="img/3.jpg" width="640" height="200">
-<img class="lazy" data-original="img/4.jpg" width="640" height="200">
-<img class="lazy" data-original="img/5.jpg" width="640" height="200">
-<img class="lazy" data-original="img/6.jpg" width="640" height="200">
-<img class="lazy" data-original="img/7.jpg" width="640" height="200">
-<img class="lazy" data-original="img/8.jpg" width="640" height="200">
-<img class="lazy" data-original="img/9.jpg" width="640" height="200">
-
-
+</style>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="jquery.lazyload.js"></script>
 <script type="text/javascript">
-    $(function(){
+    $(function () {
         $("img.lazy").lazyload({
-            threshold:40000
         });
     });
 </script>
