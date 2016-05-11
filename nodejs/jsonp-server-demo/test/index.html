@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jsonp test</title>
+</head>
+<body>
+<script src="jquery.js"></script>
+<script>
+    $(function () {
+        $.getJSON('http://127.0.0.1:3003/jsonp?callback=?', function (result) {
+            console.log(result);
+        });
+    });
+</script>
+</body>
+</html>
