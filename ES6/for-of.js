@@ -55,7 +55,7 @@ var obj = {
     c: 3
 };
 for (var key of Object.keys(obj)) {
-    console.log(key + ": " + obj[key]);
+    //console.log(key + ": " + obj[key]);
 }
 
 /**
@@ -67,3 +67,14 @@ for (var key of Object.keys(obj)) {
  *          jQuery.prototype[Symbol.iterator] = Array.prototype[Symbol.iterator];
  *
  */
+// 实现一个迭代器
+var iterable = [3, 4, 5];
+var $iterator = iterable[Symbol.iterator]();
+var $result = $iterator.next();
+while (!$result.done) {
+    VAR = $result.value;
+
+    console.log(VAR);
+
+    $result = $iterator.next();
+}
