@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <title>ng-file-upload test</title>
+
+</head>
+<body>
+
+
+<form name="myForm" ng-controller="FileController">
+    <fieldset>
+        <legend>ng-file-upload</legend>
+
+        <input type="file" ngf-select ng-model="picFile" name="file" ngf-accept="'image/*'" required>
+
+        <button ng-disabled="!myForm.$valid" ng-click="uploadPic(picFile)">Submit</button>
+        <img ngf-src="picFile" class="thumb">
+              <span class="progress" ng-show="picFile.progress >= 0">
+                  <div style="width:{{picFile.progress}}%" ng-bind="picFile.progress + '%'"></div>
+              </span>
+    </fieldset>
+    <br/>
+</form>
+
+
+<script src="/bower_components/angular/angular.min.js"></script>
+<script src="/bower_components/ng-file-upload-shim/ng-file-upload-shim.min.js"></script>
+<script src="/bower_components/ng-file-upload/ng-file-upload.js"></script>
+<script>
+    var app = angular.module('app', ['ngFileUpload']);
+
+    app.controller('FileController', function ($scope, Upload) {
+
+        $scope.uploadPic = function (file) {
+            if (file != null) {
+                $scope.upload(file);
+            }
+        };
+
+        $scope.upload = function (file) {
+            file.upload = Upload.upload({
+                url: '/upload',
+                method: 'POST',
+                data: {
+                    'Content-Type': file.type === null || file.type === '' ? 'application/octet-stream' : file.type,
+                    file: file
+                }
+            });
+
+            file.upload.success(function (data, status, headers, config) {
+                console.log(111);
+            });
+
+            file.upload.progress(function (evt) {
+                file.progress = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
+            });
+        };
+
+    });
+</script>
+</body>
+</html>

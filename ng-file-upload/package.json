@@ -1,0 +1,17 @@
+{
+  "name": "ng-file-upload",
+  "version": "1.0.0",
+  "description": "angular,file,upload",
+  "main": "app",
+  "scripts": {},
+  "keywords": [
+    "angular",
+    "file",
+    "upload"
+  ],
+  "author": "harry.lang",
+  "dependencies": {
+    "express": "^4.13.4",
+    "formidable": "^1.0.17"
+  }
+}
