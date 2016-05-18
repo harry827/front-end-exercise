@@ -57,3 +57,13 @@ var obj = {
 for (var key of Object.keys(obj)) {
     console.log(key + ": " + obj[key]);
 }
+
+/**
+ * for-of 循环语句通过方法调用来遍历各种集合。
+ * 数组、Maps 对象、Sets 对象以及其它在我们讨论的对象有一个共同点,它们都有一个迭代器方法。
+ * 你可以给任意类型的对象添加迭代器方法:
+ *      当你向任意对象添加 myObject[Symbol.iterator]()方法,就可以遍历这个对象了
+ *      比如： jQuery 对象也支持 for-of 循环
+ *          jQuery.prototype[Symbol.iterator] = Array.prototype[Symbol.iterator];
+ *
+ */
