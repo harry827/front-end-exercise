@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>日历测试</title>
+
+    <link rel="stylesheet" href="calendar.css"/>
+</head>
+<body>
+<style>
+    html {
+        font-family: "Microsoft Yahei", Helvetica, Arial, sans-serif;
+        font-size: 14px;
+    }
+</style>
+<div id="test" style="width: 220px;"></div>
+
+<script src="./jquery.js" type="text/javascript"></script>
+<script src="./zcalendar.js" type="text/javascript"></script>
+<script type="text/javascript">
+    $(function () {
+        $('#test').zcalendar({
+            defaultDate: new Date(2016, 5, 30),
+            monthChange: function (year, month) {
+                console.log(year);
+                console.log(month);
+            },
+            dateChange: function (d) {
+                console.log(d.toLocaleDateString());
+                var str = $.zcalendar.formatDate(d, '-');
+                console.log(str);
+                console.log($.zcalendar.str2date(str, '-'));
+            }
+        });
+    });
+</script>
+
+</body>
+</html>

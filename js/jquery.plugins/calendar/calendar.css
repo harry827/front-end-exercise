@@ -1,0 +1,79 @@
+.zcalendar,
+.zcalendar * {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.zcalendar {
+    border: 1px solid #dddddd;
+    font-size: 0.9em;
+    padding: 4px;
+}
+
+.zcalendar-header {
+    position: relative;
+}
+
+.zcalendar-header:before, .zcalendar-header:after {
+    display: table;
+    content: "";
+}
+
+.zcalendar-header:after {
+    clear: both;
+}
+
+.zcalendar-handle {
+    padding: 6px;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    z-index: 9;
+}
+
+.zcalendar-pre {
+    left: 0;
+}
+
+.zcalendar-next {
+    right: 0;
+}
+
+.zcalendar-title {
+    padding: 6px;
+    text-align: center;
+    background-color: #eeeeee;
+}
+
+.zcalendar-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.zcalendar-body td {
+    text-align: right;
+    padding: 4px 6px;
+}
+
+.zcalendar-date-list {
+}
+
+.zcalendar-date {
+    cursor: pointer;
+}
+
+.zcalendar-date:hover {
+    background-color: #eeeeee;
+}
+
+.zcalendar-date.zcalendar-date-now {
+    background-color: #dddddd;
+}
+
+.zcalendar-date.zcalendar-date-active {
+    background-color: #58BF7D;
+    color: #ffffff;
+}
