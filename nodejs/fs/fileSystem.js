@@ -177,7 +177,7 @@ fs.truncate('hello.txt', 9, function (err) {
 
  参数：
  path   文件路径
- callback(err, stats)  回调，传递两个参数，异常参数err, 文件信息数组 stats
+ callback(err, stats)  回调，传递两个参数，异常参数err, 文件信息数组 stats, 是一个 fs.Stats 对象
 
  获取文件信息（不解析符号链接）:
  fs.lstat(path, callback)
@@ -196,6 +196,20 @@ fs.stat('hello.txt', function (err, stats) {
 console.log('stats--------------------');
 console.log(fs.statSync('hello.txt'));
 console.log('stats--------------------');
+
+/*
+ Class: fs.Stats
+ fs.stat(), fs.lstat() 和 fs.fstat() 以及他们对应的同步版本返回的对象
+
+ stats.isFile()
+ stats.isDirectory()
+ stats.isBlockDevice()
+ stats.isCharacterDevice()
+ stats.isSymbolicLink() (仅在与 fs.lstat()一起使用时合法)
+ stats.isFIFO()
+ stats.isSocket()
+
+ */
 
 /*
  创建硬链接:不懂硬链接是啥~
@@ -520,3 +534,45 @@ fs.watch('hello.txt', function (event, filename) {
 fs.exists('hello.txt', function (exists) {
     console.log(exists ? "存在" : "不存在");
 });
+
+/*
+ fs.createReadStream(path, [options])
+ 返回一个新的 ReadStream 对象,
+ options 是一个包含下列缺省值的对象：
+ {
+ flags: 'r',
+ encoding: null,
+ fd: null,
+ mode: 0666,
+ autoClose: true
+ }
+
+ options 可以提供 start 和 end 值用于读取文件内的特定范围而非整个文件。
+ start 和 end 都是包含在范围内的（inclusive, 可理解为闭区间）并且以 0 开始。
+ encoding 可选为 'utf8', 'ascii' 或者 'base64'.
+
+ 如果 autoClose 为 false 则即使在发生错误时也不会关闭文件描述符 (file descriptor)。
+ 此时你需要负责关闭文件，避免文件描述符泄露 (leak)。
+ 如果 autoClose 为 true （缺省值）， 当发生 error 或者 end 事件时，文件描述符会被自动释放。
+
+ Class: fs.ReadStream: 一个可读的流(Readable Stream).
+ */
+
+// 一个文件中读取1到4（4个字节）的例子：
+fs.createReadStream('hello.txt', {start: 1, end: 4});
+
+/*
+ fs.createWriteStream(path, [options]):
+ 返回一个新的 WriteStream 对象 (详见 Writable Stream).
+ options 是一个包含下列缺省值的对象：
+ {
+ flags: 'w',
+ encoding: null,
+ mode: 0666
+ }
+
+ options 也可以包含一个 start 选项用于指定在文件中开始写入数据的位置。
+ 修改而不替换文件需要 flags 的模式指定为 r+ 而不是默值的 w.
+
+ Class: fs.WriteStream：WriteStream 是一个可写的流(Writable Stream).
+ */
